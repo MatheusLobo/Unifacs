@@ -45,7 +45,7 @@ public class Program {
              System.out.println("Digite o número de páginas:");
              int numero_paginas = read.nextInt();
 
-             Livro novoLivro = new Livro(titulo, autor, editora, ano_Publi, numero_paginas);  // Cria o novo livro
+             Livro novoLivro = new Livro(titulo, autor, editora, ano_Publi, numero_paginas);  // Cria o novo livro 
              biblioteca.addlivro(novoLivro); // Adiciona o novo Livro na biblioteca
          } else if (opcao == 2) {
              biblioteca.listarLivros(); // Chamada do método para listar os livros da biblioteca

@@ -4,7 +4,7 @@ package unifacs_projetos;
 import java.util.Scanner;
 
 //Definição da classe Livro
-public class Livro {
+public class Livro {     
 String titulo; // Título do livro
 String autor; // Autor do livro
 String editora; // Editora do livro
