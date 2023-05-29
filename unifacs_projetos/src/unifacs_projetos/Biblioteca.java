@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 //Definição da classe Biblioteca
 public class Biblioteca {
-private ArrayList<Livro> livros; // Cria um ArrayList para armazenar os livros da biblioteca
+ArrayList<Livro> livros; // Cria um ArrayList para armazenar os livros da biblioteca
 
 // Construtor da classe Biblioteca
 public Biblioteca() {

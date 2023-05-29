@@ -28,7 +28,7 @@ public class Program {
          System.out.println("1 - Registrar Livro");
          System.out.println("2 - Listar Livros");
          System.out.println("3 - Buscar Livro");
-         System.out.println("4 - Sair");
+         System.out.println("4 - Sair\n");
 
          int opcao = read.nextInt(); // Leitura da opção escolhida pelo usuário
 
@@ -51,13 +51,13 @@ public class Program {
              biblioteca.listarLivros(); // Chamada do método para listar os livros da biblioteca
              System.out.println(" ");
          } else if (opcao == 3) {
-             System.out.println("Digite o título:");
+             System.out.println("Digite o título:\n");
              String titulo = read.nextLine();
              titulo = read.nextLine();
              Livro livroEncontrado = biblioteca.buscarLivro(titulo); // Chamada do método para buscar um livro pelo título
 
              if (livroEncontrado != null) {
-                 System.out.println("\nLivro encontrado:");
+                 System.out.println("\nLivro encontrado:\n");
                  System.out.println("Título: " + livroEncontrado.getTitulo());
                  System.out.println("Autor: " + livroEncontrado.getAutor());
                  System.out.println("Editora: " + livroEncontrado.getEditora());
