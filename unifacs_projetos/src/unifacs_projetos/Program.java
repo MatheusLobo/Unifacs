@@ -20,7 +20,7 @@ public class Program {
 
      System.out.println("Bem-vindo à Biblioteca Java 2023 Unifacs\n"); // Mensagem de boas-vindas
 
-     Scanner read = new Scanner(System.in); // Criação de um objeto Scanner para leitura de entrada do usuário
+     Scanner read = new Scanner(System.in); // Criação de um objeto Scanner para leitura de entrada de dados pelo usuario
 
      while (true) {
          // Menu do programa
