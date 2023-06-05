@@ -3,6 +3,7 @@ package unifacs_projetos;
 //Importação das classes Scanner e ArrayList
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.List;
 
 //Definição da classe Biblioteca
 public class Biblioteca {
@@ -13,27 +14,78 @@ public Biblioteca() {
    livros = new ArrayList<>(); // Inicializa a lista de livros vazia
 }
 
-// Método para adicionar um livro à biblioteca
+
+
+//Método para adicionar um livro à biblioteca
 public void addlivro(Livro livro) {
-   livros.add(livro); // Adiciona o livro à lista de livros da biblioteca
+    livro.setId(gerarNovoId());// Gera um novo ID para o livro
+    livros.add(livro);// Adiciona o livro à lista de livros da biblioteca
+}
+public int gerarNovoId() {
+    int novoId = livros.size() + 1;
+    while (existeId(novoId)) {
+        novoId++;
+    }
+    return novoId;
+}
+public boolean existeId(int id) {
+    for (Livro livro : livros) {
+        if (livro.getId() == id) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // Método para listar todos os livros da biblioteca
 public void listarLivros() {
-   System.out.println("\nLivros Registrados:\n");
-   System.out.printf("%-25s %-25s %-25s\n", "Título", "Autor", "Editora\n"); // %-25s para formatar o comprimento da string, ocupando 25 espaços
-   for (Livro livro : livros) {//Percorre a lista de livros realizando a checagem em cada objeto do tipo livro
-       System.out.printf("%-25s %-25s %-25s\n", livro.getTitulo(), livro.getAutor(), livro.getEditora()); // Imprime o título, autor e editora do livro em formato de tabela
-   }
+    System.out.println("\nLivros Registrados:\n");
+    System.out.printf("%-6s %-25s %-25s %-25s %-20s %s%n",
+        "ID", "Título", "Autor", "Editora", "Ano de Publicação", "Páginas");
+
+    for (Livro livro : livros) {
+        System.out.printf("%-6d %-25s %-25s %-25s %-20s %d%n",
+            livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getEditora(),
+            livro.getAnoPubli(), livro.getNumeroPaginas());
+    }
 }
 
-// Método para buscar um livro pelo título
-public Livro buscarLivro(String titulo) {
-   for (Livro livro : livros) {// Percorre a lista de livros realizando a checagem em cada objeto do tipo livro
-       if (livro.getTitulo().toLowerCase().contains(titulo.toLowerCase())) { // Converte o título para minúsculas e verifica se o título convertido contém o título fornecido pelo usuário
-           return livro; // Retorna o livro encontrado
-       }
-   }
-   return null; // Retorna null caso o livro não seja encontrado
+
+public List<Livro> buscarLivro(String titulo) {
+    List<Livro> livrosEncontrados = new ArrayList<>();
+
+    for (Livro livro : livros) {
+        if (livro.getTitulo().equalsIgnoreCase(titulo)) {
+            livrosEncontrados.add(livro);
+        }
+    }
+
+    return livrosEncontrados;
+}
+public boolean removerLivro(int id) {
+    for (Livro livro : livros) {
+        if (livro.getId() == id) {
+            livros.remove(livro);
+            return true; // Livro encontrado e removido com sucesso
+        }
+    }
+    return false; // Livro não encontrado
+}
+public void imprimirLivro(Livro livro) {
+    System.out.println("ID: " + livro.getId());
+    System.out.println("\tTítulo: " + livro.getTitulo());
+    System.out.println("\tAutor: " + livro.getAutor());
+    System.out.println("\tEditora: " + livro.getEditora());
+    System.out.println("\tAno de Publicação: " + livro.getAnoPubli());
+    System.out.println("\tNúmero de páginas: " + livro.getNumeroPaginas());
 }
 }
+	
+	
+	
+	
+
+
+
+
+
