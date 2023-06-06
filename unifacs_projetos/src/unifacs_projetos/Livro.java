@@ -20,6 +20,7 @@ public class Livro {
         this.ano_Publi = ano_Publi; // Atribui o ano de publicação fornecido ao atributo "ano_Publi"
         this.numero_paginas = numero_paginas; // Atribui o número de páginas fornecido ao atributo "numero_paginas"
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -27,6 +28,31 @@ public class Livro {
     // Método getter para obter o ID do livro
     public int getId() {
         return id; // Retorna o valor do atributo "id"
+    }
+
+    // Método setter para definir o título do livro
+    public void setTitulo(String titulo) {
+        this.titulo = titulo; // Atribui o valor fornecido ao atributo "titulo"
+    }
+
+    // Método setter para definir o autor do livro
+    public void setAutor(String autor) {
+        this.autor = autor; // Atribui o valor fornecido ao atributo "autor"
+    }
+
+    // Método setter para definir a editora do livro
+    public void setEditora(String editora) {
+        this.editora = editora; // Atribui o valor fornecido ao atributo "editora"
+    }
+
+    // Método setter para definir o ano de publicação do livro
+    public void setAnoPubli(String ano_Publi) {
+        this.ano_Publi = ano_Publi; // Atribui o valor fornecido ao atributo "ano_Publi"
+    }
+
+    // Método setter para definir o número de páginas do livro
+    public void setNumeroPaginas(int numero_paginas) {
+        this.numero_paginas = numero_paginas; // Atribui o valor fornecido ao atributo "numero_paginas"
     }
 
     // Método getter para obter o título do livro
