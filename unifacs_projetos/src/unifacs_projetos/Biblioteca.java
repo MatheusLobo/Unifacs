@@ -76,68 +76,47 @@ public class Biblioteca {
     }
     
 
-    public void editarLivro(int id, String atributo, String novoValor) {
-        for (Livro livro : livros) {
-            if (livro.getId() == id) {
-                if (livro instanceof Livro_Raro) {
-                    Livro_Raro livroRaro = (Livro_Raro) livro;
+    public void editarLivros() {
+        Scanner read = new Scanner(System.in);
 
-                    switch (atributo.toLowerCase()) {
-                        case "titulo":
-                            System.out.println("Alterando o título do livro...");
-                            livroRaro.setTitulo(novoValor);
-                            System.out.println("O título do livro foi atualizado.");
-                            break;
-                        case "autor":
-                            System.out.println("Alterando o autor do livro...");
-                            livroRaro.setAutor(novoValor);
-                            System.out.println("O autor do livro foi atualizado.");
-                            break;
-                        case "editora":
-                            System.out.println("Alterando a editora do livro...");
-                            livroRaro.setEditora(novoValor);
-                            System.out.println("A editora do livro foi atualizada.");
-                            break;
-                        case "ano":
-                            System.out.println("Alterando o ano de publicação do livro...");
-                            livroRaro.setAnoPubli(novoValor);
-                            System.out.println("O ano de publicação do livro foi atualizado.");
-                            break;
-                        case "paginas":
-                            System.out.println("Alterando o número de páginas do livro...");
-                            livroRaro.setNumeroPaginas(Integer.parseInt(novoValor));
-                            System.out.println("O número de páginas do livro foi atualizado.");
-                            break;
-                        case "raridade":
-                            System.out.println("Definindo a raridade do livro...");
-                            if (novoValor.equalsIgnoreCase("sim")) {
-                                livroRaro.setRaridade(true);
-                            } else if (novoValor.equalsIgnoreCase("nao")) {
-                                livroRaro.setRaridade(false);
-                            } else {
-                                System.out.println("Opção inválida para raridade.");
-                                return;
-                            }
-                            System.out.println("A raridade do livro foi atualizada.");
-                            break;
-                        case "valor_mercado":
-                            System.out.println("Alterando o valor de mercado do livro...");
-                            double valorMercado = Double.parseDouble(novoValor);
-                            livroRaro.setValor_mercado(valorMercado);
-                            System.out.println("O valor de mercado do livro foi atualizado.");
-                            break;
-                        default:
-                            System.out.println("Opção inválida.");
-                            return;
-                    }
-                } else {
-                    System.out.println("O livro não é do tipo LivroRaro.");
-                }
-                System.out.println("Livro editado com sucesso.");
-                return;
+        System.out.println("Lista de Livros:");
+        biblioteca.listarLivros();
+
+        System.out.println("\nDigite o número do livro que deseja editar:");
+        int numeroLivro = read.nextInt();
+
+        if (numeroLivro >= 1 && numeroLivro <= biblioteca.getQuantidadeLivros()) {
+            Livro livro = biblioteca.getLivroByNumero(numeroLivro);
+
+            if (livro instanceof LivroDigital) {
+                LivroDigital livroDigital = (LivroDigital) livro;
+                System.out.println("Opções de edição disponíveis: todos, título, autor, editora, ano, páginas, formato, tamanho.");
+
+                System.out.println("Digite a opção que deseja editar:");
+                String opcaoEdicao = read.next();
+
+                System.out.println("Digite o novo valor:");
+                String novoValor = read.nextLine();
+                novoValor = read.nextLine();
+
+                biblioteca.editarLivroDigital(livroDigital.getId(), opcaoEdicao, novoValor);
+            } else {
+                System.out.println("Opções de edição disponíveis: todos, título, autor, editora, ano, páginas, gênero.");
+
+                System.out.println("Digite a opção que deseja editar:");
+                String opcaoEdicao = read.next();
+
+                System.out.println("Digite o novo valor:");
+                String novoValor = read.nextLine();
+                novoValor = read.nextLine();
+
+                biblioteca.editarLivro(livro.getId(), opcaoEdicao, novoValor);
             }
+
+            System.out.println("Livro editado com sucesso.");
+        } else {
+            System.out.println("Número de livro inválido.");
         }
-        System.out.println("Livro não encontrado.");
     }
     
 
